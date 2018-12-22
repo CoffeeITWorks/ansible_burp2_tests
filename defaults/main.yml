@@ -1,0 +1,21 @@
+---
+
+burp_home: "/var/spool/burp"
+
+burp_usr_path: '/usr/local'
+burp_bin_path: "{{ burp_usr_path }}/sbin/burp"
+
+### Burp Server
+### http://burp.grke.org/docs/manpage.html
+burp_server_data: "{{ burp_home }}/data"
+
+burp_server_port: "4971"
+burp_server_status_port: "4972"
+
+### Burp Client
+burp_client_pidfile: "/var/run/burp.pid"
+burp_client_password: "password"
+burp_server_protocol: "1"
+
+burp_server_ca_burp_ca: "{{ burp_usr_path }}/sbin/burp_ca"
+burp_server_ssl_key_password: "password"

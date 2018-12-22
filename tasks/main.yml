@@ -1,0 +1,26 @@
+---
+
+- meta: flush_handlers
+
+# If folder is not created the test-client will fail
+- name: test_client | create CA-test folder
+  file:
+    path: "/etc/burp/CA-test"
+    state: directory
+
+- name: test_client | configure test client
+  template:
+    src: tests/test_client.conf.j2
+    dest: /etc/burp/test_client.conf
+
+- name: test_client | add local test_client
+  template:
+    src: tests/test_client.j2
+    dest: "{{ burp_server_clientconfdir }}/test_client"
+
+- name: test_client | pause 10 seconds after add local client
+  pause:
+    seconds: 10
+
+- name: basic tests
+  include: tests/test_client.yml
